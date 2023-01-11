@@ -54,26 +54,28 @@ LSRC = ft_atoi.c \
 	ft_lstsize.c 
 LOBJ = $(LSRC:%.c=libft/%.o)
 
-SRC = $(wildcard *.c)
+SRC = $(wildcard srcs/*.c)
 
-OBJ = $(SRC:%.c=objs/%.o)
+OBJ = $(SRC:srcs/%.c=objs/%.o)
 
 OBJDIR = objs
+
+
+all:  $(NAME)
 
 #---->deleet this shit
 fgit:
 	./git.sh
 #---->deleet this shit
 
-all:  $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
 	$(CC) $(CFLAGS) $(LIBFT) $(OBJ) -o $(NAME)
 	@echo "\033[1;32m ----Mandatory created----- \033[0m"
 
-objs/%.o: %.c
+objs/%.o: srcs/%.c
 	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 
 $(LIBFT) : $(LOBJ)
