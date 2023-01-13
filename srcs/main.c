@@ -6,14 +6,14 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:39:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/13 18:29:25 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:31:00 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 
-char **total_generator(int argc, char **argv)
+char ***total_generator(int argc, char **argv)
 {
 	char ***total;
 	int i;
@@ -72,6 +72,8 @@ int total_counter(int argc,char ***total)
 
 int	main(int argc, char **argv)
 {
-
+	char ***total;
+	
+	total = total_generator(argc, argv);
 	ft_printf("--%d--\n", total_counter(argc,total));
 }
