@@ -67,7 +67,7 @@ all:  $(NAME)
 fgit:
 	./git.sh
 #---->deleet this shit
-
+#always call libft in all to solve touching libft files
 
 $(NAME): $(LIBFT) $(OBJ)
 	$(CC) $(CFLAGS) $(LIBFT) $(OBJ) -o $(NAME)
