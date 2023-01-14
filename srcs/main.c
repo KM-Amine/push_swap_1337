@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:39:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/14 13:10:28 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/14 13:15:51 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ char ***total_generator(int argc, char **argv)
 				{
 					if (argv[j][i+1] == '+' || argv[j][i+1] == '-' || argv[j][i+1] == '\0')
 					{
-						ft_printf("Error: consecutive signes");
+						ft_putstr_fd("Error", 2);
 						exit_fuction();
 					}
 					if(i != 0 && argv[j][i-1] != ' ')
 					{
-						ft_printf("Error: numbers not separated by space");
+						ft_putstr_fd("Error", 2);
 						exit_fuction();
 					}
 				}
@@ -52,7 +52,7 @@ char ***total_generator(int argc, char **argv)
 				}
 				else
 				{
-					ft_printf("Error: stranger character");
+					ft_putstr_fd("Error", 2);
 					exit_fuction();
 				}
 			}
@@ -144,7 +144,7 @@ char **check_duplicates(char **final)
 		{
 			if (ft_strncmp(dup[j],final[i],ft_strlen(dup[j])+ft_strlen(final[i])) == 0)
 			{
-				ft_printf("Eroor: their is duplicates in numbers\n");
+				ft_putstr_fd("Error", 2);
 				exit_fuction();
 			}
 			j++;
@@ -173,12 +173,12 @@ int **numbers_converter(char **final)
 		tab[i] = ft_atoi_max(final[i], &check);
 		if(check == 1)
 		{
-			ft_printf("Error: -INT_MAX- reached\n");
+			ft_putstr_fd("Error", 2);
 			exit_fuction();
 		}
 		if(check == -1)
 		{
-			ft_printf("Error: -INT_MIN- reached\n");
+			ft_putstr_fd("Error", 2);
 			exit_fuction();
 		}
 		ft_printf("%d\n",tab[i]);
@@ -187,6 +187,7 @@ int **numbers_converter(char **final)
 	return (0);
 }
 
+//garbage collector system
 int	main(int argc, char **argv)
 {
 	char ***total;
@@ -195,7 +196,6 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 	{
-		ft_printf("unvalid number of arguments");
 		return (0);
 	}
 	total = total_generator(argc, argv);
