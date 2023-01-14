@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:39:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/13 19:27:29 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/14 13:10:28 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ char ***total_generator(int argc, char **argv)
 					if (argv[j][i+1] == '+' || argv[j][i+1] == '-' || argv[j][i+1] == '\0')
 					{
 						ft_printf("Error: consecutive signes");
+						exit_fuction();
+					}
+					if(i != 0 && argv[j][i-1] != ' ')
+					{
+						ft_printf("Error: numbers not separated by space");
 						exit_fuction();
 					}
 				}
@@ -155,11 +160,31 @@ int **numbers_converter(char **final)
 {
 	int i;
 	int *tab;
+	int	check;
 
+	check = 0;
 	i = 0;
 	while (final[i])
 		i++;
-	tab= (int)ft_calloc();	
+	tab= (int*)ft_calloc(i, sizeof(int));
+	i = 0;
+	while (final[i])
+	{
+		tab[i] = ft_atoi_max(final[i], &check);
+		if(check == 1)
+		{
+			ft_printf("Error: -INT_MAX- reached\n");
+			exit_fuction();
+		}
+		if(check == -1)
+		{
+			ft_printf("Error: -INT_MIN- reached\n");
+			exit_fuction();
+		}
+		ft_printf("%d\n",tab[i]);
+		i++;
+	}
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -168,15 +193,20 @@ int	main(int argc, char **argv)
 	char **final;
 	int **tab;
 
+	if (argc == 1)
+	{
+		ft_printf("unvalid number of arguments");
+		return (0);
+	}
 	total = total_generator(argc, argv);
 	final = data_joiner(total,argc);
 	free_total(total,argc);
-	int i = 0;
+//	int i = 0;
 	final = check_duplicates(final);
 	tab = numbers_converter(final);
-	while (final[i])
-	{
-		ft_printf("%s\n", final[i]);
-		i++;
-	}
+	// while (final[i])
+	// {
+	// 	ft_printf("%s\n", final[i]);
+	// 	i++;
+	// }
 }

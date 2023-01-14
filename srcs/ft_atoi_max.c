@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_max.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 14:29:32 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/14 11:38:06 by mkhellou         ###   ########.fr       */
+/*   Created: 2023/01/14 12:53:27 by mkhellou          #+#    #+#             */
+/*   Updated: 2023/01/14 13:03:29 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <limits.h>
+#include "../push_swap.h"
 
 static int	ft_isspace(char c)
 {
@@ -20,7 +19,7 @@ static int	ft_isspace(char c)
 	return (0);
 }
 
-int	number_creator(const char *str, int i, int sign)
+int	number_creator(const char *str, int i, int sign, int *check)
 {
 	long	result;
 
@@ -30,15 +29,21 @@ int	number_creator(const char *str, int i, int sign)
 		result = result * 10;
 		result = result + (str[i] - '0');
 		if (sign > 0 && result > INT_MAX)
+		{
+			*check = 1;
 			return (0);
+		}
 		if (sign < 0 && -result < INT_MIN)
+		{
+			*check = -1;
 			return (-1);
+		}
 		i++;
 	}
 	return (sign * result);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi_max(const char *str,int *check)
 {
 	int	i;
 	int	sign;
@@ -53,5 +58,5 @@ int	ft_atoi(const char *str)
 			sign = sign * -1;
 		i++;
 	}
-	return (number_creator(str, i, sign));
+	return (number_creator(str, i, sign,check));
 }

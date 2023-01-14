@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 17:30:45 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/14 13:03:41 by mkhellou         ###   ########.fr       */
+/*   Created: 2023/01/13 19:36:36 by mkhellou          #+#    #+#             */
+/*   Updated: 2023/01/14 12:52:35 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "./libft/libft.h"
-# include "limits.h"
-
-int	ft_atoi_max(const char *str,int *check);
-
-#endif
+int	main(void)
+{
+	int i;
+	int nbr = 5;
+	ft_printf("%d", ft_atoi("-2147483649"));
+}
