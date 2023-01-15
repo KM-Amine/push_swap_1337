@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 12:53:27 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/14 13:03:29 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/15 08:59:29 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	number_creator(const char *str, int i, int sign, int *check)
 			*check = 1;
 			return (0);
 		}
-		if (sign < 0 && -result < INT_MIN)
+		if (sign < 0 && (-result) < INT_MIN)
 		{
 			*check = -1;
 			return (-1);
@@ -43,7 +43,7 @@ int	number_creator(const char *str, int i, int sign, int *check)
 	return (sign * result);
 }
 
-int	ft_atoi_max(const char *str,int *check)
+int	ft_atoi_max(const char *str, int *check)
 {
 	int	i;
 	int	sign;
@@ -58,5 +58,5 @@ int	ft_atoi_max(const char *str,int *check)
 			sign = sign * -1;
 		i++;
 	}
-	return (number_creator(str, i, sign,check));
+	return (number_creator(str, i, sign, check));
 }
