@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:11:17 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/16 13:11:31 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:09:35 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ t_stack stack_b_creator(int len)
 	t_stack stack_b;
 
 	stack_b.stack  = (t_element *)ft_calloc(len, sizeof(t_stack));
-	stack_b.size = len;
+	stack_b.size = 0;
 	return (stack_b);
 }
