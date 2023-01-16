@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_check.c                                       :+:      :+:    :+:   */
+/*   1-args_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:25:30 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/15 09:20:34 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/15 19:06:29 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,9 @@ char	**argument_analyser(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	total = total_generator(argc, argv);
 	final = data_joiner(total, argc);
-	free_total(total, argc);
+	free_total(total);
 	final = check_duplicates(final);
 	return (final);
-}
-
-void	free_total(char ***total, int argc)
-{
-	int	j;
-
-	j = 1;
-	while (j < argc)
-	{
-		free(total[j]);
-		j++;
-	}
-	free(total);
 }
 
 char	***total_generator(int argc, char **argv)
@@ -46,12 +33,19 @@ char	***total_generator(int argc, char **argv)
 	int		j;
 
 	total = (char ***)ft_calloc(argc + 1, sizeof(char **));
+	if (!total)
+		exit_null_free();
 	j = 1;
 	while (j < argc)
 	{
 		i = 0;
 		error_detector(argv, i, j);
 		total[j] = ft_split(argv[j], ' ');
+		if(!total[j])
+		{
+			free_total_exit(total);
+			exit_null_free();
+		}
 		j++;
 	}
 	return (total);
@@ -88,6 +82,10 @@ char	**data_joiner(char ***total, int argc)
 
 	count = total_counter(argc, total);
 	final = (char **)ft_calloc(count + 1, sizeof(char **));
+	if (!final)
+	{
+		exit_null_free();
+	}
 	c = 0;
 	j = 1;
 	while (j < argc)
@@ -102,4 +100,51 @@ char	**data_joiner(char ***total, int argc)
 		j++;
 	}
 	return (final);
+}
+
+void	free_total(char ***total)
+{
+	int	j;
+
+	j = 1;
+	while (total[j])
+	{
+		free(total[j]);
+		j++;
+	}
+	free(total);
+}
+
+
+void	free_total_exit(char ***total)
+{
+	int	j;
+	int i;
+
+	j = 1;
+	while (total[j])
+	{
+		i = 0;
+		while (total[j][i])
+		{
+			free(total[j][i]);
+			i++;
+		}
+		free(total[j]);
+		j++;
+	}
+	free(total);
+}
+
+void	free_args(char **args)
+{
+	int i;
+
+	i =0;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
 }

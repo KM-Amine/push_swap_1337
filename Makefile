@@ -80,7 +80,7 @@ objs/%.o: srcs/%.c
 
 $(LIBFT) : $(LOBJ)
 	@$(MAKE) -C libft
-libft/%.o: libft/%.c
+libft/%.o: libft/%.c $(HEADER)
 	@$(CC) $(LFLAGS) -c $< -o $@
 
 

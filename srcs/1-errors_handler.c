@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors_handler.c                                   :+:      :+:    :+:   */
+/*   1-errors_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:36:20 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/15 09:00:44 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/16 09:16:15 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	duplicate_analyser(char	**dup, char **final, int *i, int *j)
 		if (ft_strncmp(dup[(*j)], final[*i], ft_strlen(dup[(*j)])
 				+ ft_strlen(final[*i])) == 0)
 		{
-			ft_putstr_fd("Error", 2);
-			exit_fuction();
+			ft_putstr_fd("Error\n", 2);
+			exit_input_function();
 		}
 		(*j)++;
 	}
@@ -38,6 +38,8 @@ char	**check_duplicates(char **final)
 	while (final[count])
 		count++;
 	dup = (char **)ft_calloc(count + 1, sizeof(char **));
+	if(!dup)
+		exit_null_free();
 	dup[0] = final[0];
 	i = 1;
 	while (final[i])
@@ -55,13 +57,13 @@ void	sign_checker(char **argv, int i, int j)
 	if (argv[j][i + 1] == '+' || argv[j][i + 1] == '-'
 		|| argv[j][i + 1] == '\0')
 	{
-		ft_putstr_fd("Error", 2);
-		exit_fuction();
+		ft_putstr_fd("Error\n", 2);
+		exit_input_function();
 	}
 	if (i != 0 && argv[j][i - 1] != ' ')
 	{
-		ft_putstr_fd("Error", 2);
-		exit_fuction();
+		ft_putstr_fd("Error\n", 2);
+		exit_input_function();
 	}
 }
 
@@ -83,10 +85,11 @@ void	error_detector(char **argv, int i, int j)
 			}
 			else
 			{
-				ft_putstr_fd("Error", 2);
-				exit_fuction();
+				ft_putstr_fd("Error\n", 2);
+				exit_input_function();
 			}
 		}
 		i++;
 	}
 }
+
