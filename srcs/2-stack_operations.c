@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:20:27 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/19 12:41:19 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/19 17:45:26 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,14 @@ void rb_move(t_stack *stack_a, t_stack *stack_b)
 
 void rr_move(t_stack *stack_a, t_stack *stack_b)
 {
-	ra_move(stack_a, stack_b);
-	rb_move(stack_a, stack_b);
+	t_element tmp;
+
+	tmp = stack_a->stack[0];
+	ft_memmove(&(stack_a->stack[0]), &(stack_a->stack[1]), (stack_a->size - 1)*sizeof(t_element));
+	stack_a->stack[stack_a->size - 1] = tmp;
+	tmp = stack_b->stack[0];
+	ft_memmove(&(stack_b->stack[0]), &(stack_b->stack[1]), (stack_b->size - 1)*sizeof(t_element));
+	stack_b->stack[stack_b->size - 1] = tmp;
 	ft_printf("rr\n");
 }
 
@@ -95,8 +101,14 @@ void rrb_move(t_stack *stack_a, t_stack *stack_b)
 
 void rrr_move(t_stack *stack_a, t_stack *stack_b)
 {
-	rra_move(stack_a, stack_b);
-	rrb_move(stack_a, stack_b);
+	t_element tmp;
+
+	tmp = stack_a->stack[stack_a->size - 1];
+	ft_memmove(&(stack_a->stack[1]), &(stack_a->stack[0]), (stack_a->size - 1)*sizeof(t_element));
+	stack_a->stack[0] = tmp;
+	tmp = stack_b->stack[stack_b->size - 1];
+	ft_memmove(&(stack_b->stack[1]), &(stack_b->stack[0]), (stack_b->size - 1)*sizeof(t_element));
+	stack_b->stack[0] = tmp;
 	ft_printf("rrr\n");
 }
 
