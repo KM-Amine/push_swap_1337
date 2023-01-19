@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:19:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/19 12:43:16 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:45:09 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,43 +30,14 @@ int	get_index(t_stack *st)
 	return(biggest_index);
 }
 
-// void	sorting_system(t_stack *sta, t_stack *stb)
-// {
-// 	int i;
-// 	int len;
-// 	int j;
-
-// 	len = sta->size;
-// 	j = 0;
-// 	while (j < len)
-// 	{
-// 		i = 0;
-// 		while (i < sta->size)
-// 		{
-// 			if (sta->stack[0].pos != j)
-// 				move(ra, sta, stb);
-// 			i++;
-// 		}
-// 		move(pb, sta, stb);
-// 		j++;
-// 	}
-// 	j = 0;
-// 	while (j < len)
-// 	{
-// 		move(pa, sta, stb);
-// 		j++;
-// 	}
-// 	return;
-// }
-
 void sorting_system(t_stack *sta, t_stack *stb)
 {
 	int i;
 	int len;
-//	int pos;
 	int max;
-	(void)stb;
-//	move(pb,sta,stb);
+	int index;
+	int tmp;
+
 	len = sta->size;
 	max = len;
 	i = 0;
@@ -80,7 +51,6 @@ void sorting_system(t_stack *sta, t_stack *stb)
 		}
 		else if (sta->stack[0].pos < i + 30)
 		{
-		//	ft_printf("%d---",i);
 			move(pb, sta, stb);
 			i++;
 		}
@@ -90,38 +60,11 @@ void sorting_system(t_stack *sta, t_stack *stb)
 			continue;
 		}
 	}
-	//move(pa,sta,stb);
-	// len--;
-	// while (len >= 0)
-	// {
-	// 	// pos = get_index(len,sta);
-	// 	// // ft_printf("%d-",pos);
-	// 	// len--;
-	// 	// if (pos > (stb->size)/2)
-	// 	// {
-	// 	while (sta->stack[0].pos != len)
-	// 	{
-	// 		move(ra,sta,stb);	
-	// 	}
-	// 	//	ft_printf("%d %d",sta->stack[0].pos, len);
-	// 	move(pb,sta,stb);
-	// 	len--;
-	// 		//move(pa,sta,stb);
-	// 	// 	len--;
-	// 	// }
-	// 	// else
-	// 	// {
-	// 	// 	while (stb->stack[0].nbr != len)
-	// 	// 		move(rb,sta,stb);	
-	// 	// 	//move(pa,sta,stb);
-	// 	// 	len--;
-	// 	// }
-	// }
 	max--;
 	while (max >= 0)
 	{
-		int index = get_index(stb);
-		int tmp = stb->stack[index].nbr;
+		index = get_index(stb);
+		tmp = stb->stack[index].nbr;
 		if (index < (stb->size)/2)
 		{
 			while (stb->stack[0].nbr != tmp )
@@ -136,9 +79,5 @@ void sorting_system(t_stack *sta, t_stack *stb)
 			move(pa,sta,stb);
 		 	max--;
 		}
-			// while (stb->stack[0].pos != max)
-			// 	move(rrb,sta,stb);	
-			// move(pa,sta,stb);
-		 	// max--;
 	}
 }
