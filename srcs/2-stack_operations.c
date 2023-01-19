@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:20:27 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/16 15:47:14 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:41:19 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void element_swap(t_element *a,t_element *b)
 {
 	t_element tmp;
-	
+
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
@@ -103,7 +103,11 @@ void rrr_move(t_stack *stack_a, t_stack *stack_b)
 void pb_move(t_stack *stack_a, t_stack *stack_b)
 {
 	t_element tmp;
-
+	if (stack_a->size == 0)
+	{
+		ft_printf("fuuuck sta empty\n");
+		exit(1);
+	}
 	tmp = stack_a->stack[0];
 	ft_memmove(&(stack_a->stack[0]), &(stack_a->stack[1]), (stack_a->size - 1)*sizeof(t_element));
 	(stack_a->size)--;
@@ -116,7 +120,11 @@ void pb_move(t_stack *stack_a, t_stack *stack_b)
 void pa_move(t_stack *stack_a, t_stack *stack_b)
 {
 	t_element tmp;
-
+	if (stack_b->size == 0)
+	{
+		ft_printf("fuuuck stb empty\n");
+		exit(1);
+	}
 	tmp = stack_b->stack[0];
 	ft_memmove(&(stack_b->stack[0]), &(stack_b->stack[1]), (stack_b->size - 1)*sizeof(t_element));
 	(stack_b->size)--;
