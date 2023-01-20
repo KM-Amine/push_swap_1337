@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:19:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/20 15:33:37 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:37:34 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ void check_max_value(t_stack *sta, t_stack *stb,int i,int *biggest)
 	}
 }
 
+void throw_down(t_stack *sta, t_stack *stb,int i,int *biggest,int max)
+{
+	move(pb, sta, stb);
+	if(sta->stack[0].pos >= i + 1 + 30)
+		move(rr, sta, stb);
+	else
+		move(rb, sta, stb);
+	*biggest = max;
+}
+
 void sorting_system(t_stack *sta, t_stack *stb)
 {
 	int i;
@@ -54,21 +64,17 @@ void sorting_system(t_stack *sta, t_stack *stb)
 	i = 0;
 	while (i < len)
 	{
-		// if (sta->stack[0].pos == biggest-1 && sta->stack[0].pos >= i + 30)
-		// {
-		// 	move(rra,sta,stb);
-		// 	biggest--;
-		// }
 		check_max_value(sta,stb,i,&biggest);
 		if (sta->stack[0].pos < i)
 		{
-			move(pb, sta, stb);
-			if(sta->stack[0].pos >= i + 1 + 30)
-				move(rr, sta, stb);
-			else
-				move(rb, sta, stb);
+			throw_down(sta,stb,i,&biggest,max);
+			// move(pb, sta, stb);
+			// if(sta->stack[0].pos >= i + 1 + 30)
+			// 	move(rr, sta, stb);
+			// else
+			// 	move(rb, sta, stb);
+			// biggest = max;
 			i++;
-			biggest = max;
 		}
 		else if (sta->stack[0].pos < i + 30)
 		{
