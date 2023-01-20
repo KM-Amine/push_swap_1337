@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:19:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/20 16:00:50 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:37:13 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ int	get_index(t_stack *st)
 	return(biggest_index);
 }
 
-void check_max_value(t_stack *sta, t_stack *stb,int i,int *biggest)
+void check_max_value(t_stack *sta, t_stack *stb,int i,int *biggest, int range)
 {
-	if (sta->stack[0].pos == *biggest-1 && sta->stack[0].pos >= i + 30)
+	if (sta->stack[0].pos == *biggest-1 && sta->stack[0].pos >= i + range)
 	{
 		move(rra,sta,stb);
 		(*biggest)--;
 	}
 }
 
-void throw_down(t_stack *sta, t_stack *stb,int i,int *biggest,int max)
+void throw_down(t_stack *sta, t_stack *stb,int i,int *biggest,int max,int range)
 {
 	move(pb, sta, stb);
-	if(sta->stack[0].pos >= i + 1 + 30)
+	if(sta->stack[0].pos >= i + 1 + range)
 		move(rr, sta, stb);
 	else
 		move(rb, sta, stb);
@@ -89,24 +89,25 @@ void back_to_sta(t_stack *sta, t_stack *stb,int max)
 	}
 }
 
-void send_to_stb(t_stack *sta, t_stack *stb, int len)
+void send_to_stb(t_stack *sta, t_stack *stb, int len, int range)
 {
 	int i;
 	int biggest;
 	int max;
+
 	
 	max = len;
 	biggest = len;
 	i = 0;
 	while (i < len)
 	{
-		check_max_value(sta,stb,i,&biggest);
+		check_max_value(sta,stb,i,&biggest,range);
 		if (sta->stack[0].pos < i)
 		{
-			throw_down(sta,stb,i,&biggest,max);
+			throw_down(sta,stb,i,&biggest,max,range);
 			i++;
 		}
-		else if (sta->stack[0].pos < i + 30)
+		else if (sta->stack[0].pos < i + range)
 		{
 			throw_up(sta,stb,&biggest,max);
 			i++;
@@ -119,37 +120,54 @@ void send_to_stb(t_stack *sta, t_stack *stb, int len)
 	}
 }
 
+void sorting_for_3(t_stack *sta, t_stack *stb)
+{
+	if (sta->stack[0].pos == 2)
+	{
+		move(ra,sta,stb);
+		if (sta->stack[0].pos == 1)
+			move(sa,sta,stb);
+	}
+	else if (sta->stack[0].pos == 1)
+	{
+		if (sta->stack[1].pos == 0)
+			move(sa,sta,stb);
+		else
+			move(rra,sta,stb);
+	}
+	else if (sta->stack[0].pos == 0)
+	{
+		if (sta->stack[1].pos == 2)
+		{
+			move(ra,sta,stb);
+			move(sa,sta,stb);
+			move(rra,sta,stb);
+		}
+	}
+}
+
+// if sorted
 void sorting_system(t_stack *sta, t_stack *stb)
 {
-	//int i;
 	int len;
-	//int max;
-	//int biggest;
-
 	len = sta->size;
-	// max = len;
-
-	// biggest = max;
-	// i = 0;
-	// while (i < len)
-	// {
-	// 	check_max_value(sta,stb,i,&biggest);
-	// 	if (sta->stack[0].pos < i)
-	// 	{
-	// 		throw_down(sta,stb,i,&biggest,max);
-	// 		i++;
-	// 	}
-	// 	else if (sta->stack[0].pos < i + 30)
-	// 	{
-	// 		throw_up(sta,stb,&biggest,max);
-	// 		i++;
-	// 	}
-	// 	else
-	// 	{
-	// 		move(ra, sta, stb);
-	// 		continue;
-	// 	}
-	// }
-	send_to_stb(sta,stb,len);
-	back_to_sta(sta,stb,len);
+	
+	if (len <=3)
+	{
+		sorting_for_3(sta,stb);
+	}
+	else if (len <= 5)
+	{
+		sorting_for_5(sta,stb);
+	}
+	else if (len <= 100)
+	{	
+		send_to_stb(sta,stb,len,15);
+		back_to_sta(sta,stb,len);
+	}
+	else if (len <= 500)
+	{
+		send_to_stb(sta,stb,len,30);
+		back_to_sta(sta,stb,len);
+	}
 }
