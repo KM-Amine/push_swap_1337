@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:19:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/20 10:14:34 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:33:24 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,19 @@ void sorting_system(t_stack *sta, t_stack *stb)
 	int max;
 	int index;
 	int tmp;
+	int biggest;
 
 	len = sta->size;
 	max = len;
+	biggest = max;
 	i = 0;
 	while (i < len)
 	{
+		if (sta->stack[0].pos == biggest-1 && sta->stack[0].pos >= i + 30)
+		{
+			move(rra,sta,stb);
+			biggest--;
+		}
 		if (sta->stack[0].pos < i)
 		{
 			move(pb, sta, stb);
@@ -51,6 +58,7 @@ void sorting_system(t_stack *sta, t_stack *stb)
 			else
 				move(rb, sta, stb);
 			i++;
+			biggest = max;
 		}
 		else if (sta->stack[0].pos < i + 30)
 		{
@@ -62,6 +70,7 @@ void sorting_system(t_stack *sta, t_stack *stb)
 				else
 					move(sb, sta, stb);
 			}
+			biggest = max;
 			i++;
 		}
 		else
