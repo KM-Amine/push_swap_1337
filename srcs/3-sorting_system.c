@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:19:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/20 15:37:34 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:00:50 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,52 +49,24 @@ void throw_down(t_stack *sta, t_stack *stb,int i,int *biggest,int max)
 	*biggest = max;
 }
 
-void sorting_system(t_stack *sta, t_stack *stb)
+void throw_up(t_stack *sta, t_stack *stb,int *biggest,int max)
 {
-	int i;
-	int len;
-	int max;
+	move(pb, sta, stb);
+	if (stb->stack[0].pos < stb->stack[1].pos)
+	{
+		if (sta->stack[0].pos > sta->stack[1].pos )
+			move(ss, sta, stb);
+		else
+			move(sb, sta, stb);
+	}
+	*biggest = max;
+}
+
+void back_to_sta(t_stack *sta, t_stack *stb,int max)
+{
 	int index;
 	int tmp;
-	int biggest;
 
-	len = sta->size;
-	max = len;
-	biggest = max;
-	i = 0;
-	while (i < len)
-	{
-		check_max_value(sta,stb,i,&biggest);
-		if (sta->stack[0].pos < i)
-		{
-			throw_down(sta,stb,i,&biggest,max);
-			// move(pb, sta, stb);
-			// if(sta->stack[0].pos >= i + 1 + 30)
-			// 	move(rr, sta, stb);
-			// else
-			// 	move(rb, sta, stb);
-			// biggest = max;
-			i++;
-		}
-		else if (sta->stack[0].pos < i + 30)
-		{
-			move(pb, sta, stb);
-			if (stb->stack[0].pos < stb->stack[1].pos)
-			{
-				if (sta->stack[0].pos > sta->stack[1].pos )
-					move(ss, sta, stb);
-				else
-					move(sb, sta, stb);
-			}
-			biggest = max;
-			i++;
-		}
-		else
-		{
-			move(ra, sta, stb);
-			continue;
-		}
-	}
 	max--;
 	while (max >= 0)
 	{
@@ -115,4 +87,69 @@ void sorting_system(t_stack *sta, t_stack *stb)
 		 	max--;
 		}
 	}
+}
+
+void send_to_stb(t_stack *sta, t_stack *stb, int len)
+{
+	int i;
+	int biggest;
+	int max;
+	
+	max = len;
+	biggest = len;
+	i = 0;
+	while (i < len)
+	{
+		check_max_value(sta,stb,i,&biggest);
+		if (sta->stack[0].pos < i)
+		{
+			throw_down(sta,stb,i,&biggest,max);
+			i++;
+		}
+		else if (sta->stack[0].pos < i + 30)
+		{
+			throw_up(sta,stb,&biggest,max);
+			i++;
+		}
+		else
+		{
+			move(ra, sta, stb);
+			continue;
+		}
+	}
+}
+
+void sorting_system(t_stack *sta, t_stack *stb)
+{
+	//int i;
+	int len;
+	//int max;
+	//int biggest;
+
+	len = sta->size;
+	// max = len;
+
+	// biggest = max;
+	// i = 0;
+	// while (i < len)
+	// {
+	// 	check_max_value(sta,stb,i,&biggest);
+	// 	if (sta->stack[0].pos < i)
+	// 	{
+	// 		throw_down(sta,stb,i,&biggest,max);
+	// 		i++;
+	// 	}
+	// 	else if (sta->stack[0].pos < i + 30)
+	// 	{
+	// 		throw_up(sta,stb,&biggest,max);
+	// 		i++;
+	// 	}
+	// 	else
+	// 	{
+	// 		move(ra, sta, stb);
+	// 		continue;
+	// 	}
+	// }
+	send_to_stb(sta,stb,len);
+	back_to_sta(sta,stb,len);
 }
