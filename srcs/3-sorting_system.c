@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:19:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/20 16:37:13 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/20 18:30:57 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,31 +122,47 @@ void send_to_stb(t_stack *sta, t_stack *stb, int len, int range)
 
 void sorting_for_3(t_stack *sta, t_stack *stb)
 {
-	if (sta->stack[0].pos == 2)
+	if (sta->stack[0].nbr > sta->stack[1].nbr && sta->stack[0].nbr > sta->stack[2].nbr)
 	{
 		move(ra,sta,stb);
-		if (sta->stack[0].pos == 1)
+		if (sta->stack[0].nbr > sta->stack[1].nbr)
 			move(sa,sta,stb);
 	}
-	else if (sta->stack[0].pos == 1)
+	else if (sta->stack[0].nbr > sta->stack[1].nbr && sta->stack[0].nbr < sta->stack[2].nbr)
 	{
-		if (sta->stack[1].pos == 0)
 			move(sa,sta,stb);
-		else
+	}
+	else if (sta->stack[0].nbr < sta->stack[1].nbr && sta->stack[0].nbr > sta->stack[2].nbr)
+	{
 			move(rra,sta,stb);
 	}
-	else if (sta->stack[0].pos == 0)
+	else if (sta->stack[0].nbr < sta->stack[1].nbr && sta->stack[0].nbr < sta->stack[2].nbr)
 	{
-		if (sta->stack[1].pos == 2)
+		if (sta->stack[1].nbr > sta->stack[2].nbr)
 		{
-			move(ra,sta,stb);
 			move(sa,sta,stb);
-			move(rra,sta,stb);
+			move(ra,sta,stb);
 		}
 	}
 }
 
-// if sorted
+void sorting_for_5(t_stack *sta, t_stack *stb)
+{
+	while (sta->stack[0].pos != 1 && sta->stack[0].pos != 0)
+		move(ra,sta,stb);
+	move(pb,sta,stb);
+	while (sta->stack[0].pos != 1 && sta->stack[0].pos != 0)
+		move(ra,sta,stb);
+	move(pb,sta,stb);
+	sorting_for_3(sta,stb);
+	move(pa,sta,stb);
+	move(pa,sta,stb);
+	if(sta->stack[0].nbr > sta->stack[1].nbr)
+		move(sa,sta,stb);
+}
+
+// pb pa rr ss segfault
+// if already sorted
 void sorting_system(t_stack *sta, t_stack *stb)
 {
 	int len;

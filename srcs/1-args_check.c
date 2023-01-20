@@ -6,11 +6,24 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:25:30 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/15 19:06:29 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:32:10 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+void empty_string_checker(int argc, char **argv)
+{
+	int i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (argv[i][0] == '\0')
+			exit(0);
+		i++;
+	}	
+}
 
 char	**argument_analyser(int argc, char **argv)
 {
@@ -19,6 +32,7 @@ char	**argument_analyser(int argc, char **argv)
 
 	if (argc == 1)
 		exit(EXIT_FAILURE);
+	empty_string_checker(argc,argv);
 	total = total_generator(argc, argv);
 	final = data_joiner(total, argc);
 	free_total(total);
