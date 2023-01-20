@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:19:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/19 18:03:21 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/20 10:10:05 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ void sorting_system(t_stack *sta, t_stack *stb)
 		else if (sta->stack[0].pos < i + 30)
 		{
 			move(pb, sta, stb);
+			if (stb->stack[0].pos < stb->stack[1].pos)
+			{
+				if (sta->stack[0].pos > sta->stack[1].pos )
+					move(ss, sta, stb);
+				else
+					move(sb, sta, stb);
+			}
 			i++;
 		}
 		else
