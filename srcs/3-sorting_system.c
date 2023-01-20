@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:19:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/20 12:33:24 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:33:37 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ int	get_index(t_stack *st)
 	return(biggest_index);
 }
 
+void check_max_value(t_stack *sta, t_stack *stb,int i,int *biggest)
+{
+	if (sta->stack[0].pos == *biggest-1 && sta->stack[0].pos >= i + 30)
+	{
+		move(rra,sta,stb);
+		(*biggest)--;
+	}
+}
+
 void sorting_system(t_stack *sta, t_stack *stb)
 {
 	int i;
@@ -45,11 +54,12 @@ void sorting_system(t_stack *sta, t_stack *stb)
 	i = 0;
 	while (i < len)
 	{
-		if (sta->stack[0].pos == biggest-1 && sta->stack[0].pos >= i + 30)
-		{
-			move(rra,sta,stb);
-			biggest--;
-		}
+		// if (sta->stack[0].pos == biggest-1 && sta->stack[0].pos >= i + 30)
+		// {
+		// 	move(rra,sta,stb);
+		// 	biggest--;
+		// }
+		check_max_value(sta,stb,i,&biggest);
 		if (sta->stack[0].pos < i)
 		{
 			move(pb, sta, stb);
