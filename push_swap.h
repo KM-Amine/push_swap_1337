@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:30:45 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/16 16:23:14 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/21 10:18:45 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,8 @@ t_stack stack_b_creator(int len);
 void swap(int *a, int *b);
 void move(int nbr,t_stack *stack_a, t_stack *stack_b);
 void	sorting_system(t_stack *sta, t_stack *stb);
+
+
+void cheking_system(t_stack *sta, t_stack *stb);
 
 #endif

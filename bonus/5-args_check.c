@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1-args_check.c                                     :+:      :+:    :+:   */
+/*   5-args_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 13:25:30 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/21 09:15:23 by mkhellou         ###   ########.fr       */
+/*   Created: 2023/01/21 09:36:32 by mkhellou          #+#    #+#             */
+/*   Updated: 2023/01/21 09:40:02 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../push_swap.h"
 
@@ -22,7 +23,7 @@ void empty_string_checker(int argc, char **argv)
 		if (argv[i][0] == '\0')
 			exit(0);
 		i++;
-	}	
+	}
 }
 
 char	**argument_analyser(int argc, char **argv)

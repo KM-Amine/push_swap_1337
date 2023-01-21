@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:19:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/20 18:30:57 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/21 12:54:10 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void check_max_value(t_stack *sta, t_stack *stb,int i,int *biggest, int range)
 void throw_down(t_stack *sta, t_stack *stb,int i,int *biggest,int max,int range)
 {
 	move(pb, sta, stb);
-	if(sta->stack[0].pos >= i + 1 + range)
+	if(sta->stack[0].pos >= i + 1 + range && sta->stack[0].pos != max -1 )
 		move(rr, sta, stb);
 	else
 		move(rb, sta, stb);
@@ -54,7 +54,7 @@ void throw_up(t_stack *sta, t_stack *stb,int *biggest,int max)
 	move(pb, sta, stb);
 	if (stb->stack[0].pos < stb->stack[1].pos)
 	{
-		if (sta->stack[0].pos > sta->stack[1].pos )
+		if (sta->stack[0].pos > sta->stack[1].pos && sta->stack[0].pos != max -1)
 			move(ss, sta, stb);
 		else
 			move(sb, sta, stb);
