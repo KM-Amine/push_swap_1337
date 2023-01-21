@@ -6,13 +6,13 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:03:45 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/11/13 17:52:15 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:49:07 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *s)
+size_t	ft_strlen_3(char *s)
 {
 	size_t	i;
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero_2(void *s, size_t n)
 {
 	unsigned char	*var;
 	size_t			i;
@@ -36,7 +36,7 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc_2(size_t count, size_t size)
 {
 	void	*str;
 
@@ -45,17 +45,17 @@ void	*ft_calloc(size_t count, size_t size)
 	str = malloc(count * size);
 	if (!str)
 		return (NULL);
-	ft_bzero(str, count * size);
+	ft_bzero_2(str, count * size);
 	return (str);
 }
 
-char	*ft_strchr(char *str, char c)
+char	*ft_strchr_2(char *str, char c)
 {
 	int	i;
 	int	len;
 
 	i = 0;
-	len = ft_strlen(str);
+	len = ft_strlen_3(str);
 	while (i <= len)
 	{
 		if (str[i] == (char)c)
@@ -65,7 +65,7 @@ char	*ft_strchr(char *str, char c)
 	return (0);
 }
 
-void	ft_strlcpy(char *dst, char *src, size_t dstsize)
+void	ft_strlcpy_2(char *dst, char *src, size_t dstsize)
 {
 	size_t	i;
 

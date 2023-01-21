@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:03:42 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/08 18:12:27 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:57:02 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ char	*ft_substr_2(char *s, size_t start, size_t len)
 
 	if (s == NULL)
 		return (NULL);
-	if (len > ft_strlen(s) - start)
-		len = ft_strlen(s) - start;
-	if (start >= ft_strlen(s))
-		return ((char *)ft_calloc(1, sizeof(char)));
-	res = (char *)ft_calloc(len + 1, sizeof(char));
+	if (len > ft_strlen_3(s) - start)
+		len = ft_strlen_3(s) - start;
+	if (start >= ft_strlen_3(s))
+		return ((char *)ft_calloc_2(1, sizeof(char)));
+	res = (char *)ft_calloc_2(len + 1, sizeof(char));
 	if (!res)
 		return (0);
-	ft_strlcpy(res, &s[start], len + 1);
+	ft_strlcpy_2(res, &s[start], len + 1);
 	return (res);
 }
 
@@ -37,16 +37,16 @@ char	*ft_strjoin_2(char *s1, char *s2)
 
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
-	len = ft_strlen(s1);
-	len += ft_strlen((s2));
-	result = (char *)ft_calloc(sizeof(char), len + 1);
+	len = ft_strlen_3(s1);
+	len += ft_strlen_3((s2));
+	result = (char *)ft_calloc_2(sizeof(char), len + 1);
 	if (!result)
 	{
 		free(s1);
 		return (NULL);
 	}
-	ft_strlcpy(result, s1, ft_strlen(s1) + 1);
-	ft_strlcpy(result + ft_strlen(s1), s2, ft_strlen(s2) + 1);
+	ft_strlcpy_2(result, s1, ft_strlen_3(s1) + 1);
+	ft_strlcpy_2(result + ft_strlen_3(s1), s2, ft_strlen_3(s2) + 1);
 	free(s1);
 	return (result);
 }
@@ -57,10 +57,10 @@ char	*ft_read_line(char *tmp, int fd)
 	char	*buff;
 
 	is_read = 1;
-	buff = (char *)ft_calloc(sizeof(char), BUFFER_SIZE + 1);
+	buff = (char *)ft_calloc_2(sizeof(char), BUFFER_SIZE + 1);
 	if (buff == NULL)
 		return (0);
-	while (is_read != 0 && ft_strchr(tmp, '\n') == 0)
+	while (is_read != 0 && ft_strchr_2(tmp, '\n') == 0)
 	{
 		is_read = read(fd, buff, BUFFER_SIZE);
 		if (is_read == -1)
@@ -75,7 +75,7 @@ char	*ft_read_line(char *tmp, int fd)
 			free(buff);
 			return (NULL);
 		}
-		ft_bzero(buff, BUFFER_SIZE + 1);
+		ft_bzero_2(buff, BUFFER_SIZE + 1);
 	}
 	return (free(buff), tmp);
 }
@@ -94,7 +94,7 @@ char	*ft_turncate_line(char *tmp, char **line)
 		*line = NULL;
 		return (NULL);
 	}
-	remain = ft_substr_2(tmp, i + 1, ft_strlen(tmp));
+	remain = ft_substr_2(tmp, i + 1, ft_strlen_3(tmp));
 	if (remain == NULL)
 	{
 		free(*line);
@@ -113,7 +113,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (tmp == NULL)
-		tmp = (char *)ft_calloc(sizeof(char), 1);
+		tmp = (char *)ft_calloc_2(sizeof(char), 1);
 	if (tmp == NULL)
 		return (NULL);
 	tmp = ft_read_line(tmp, fd);

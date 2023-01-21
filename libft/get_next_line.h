@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:03:37 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/08 18:12:07 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:49:09 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-size_t	ft_strlen(char *s);
-void	ft_bzero(void *str, size_t len);
-void	*ft_calloc(size_t count, size_t size);
-char	*ft_strchr(char *str, char c);
-void	ft_strlcpy(char *dest, char *src, size_t len);
+size_t	ft_strlen_3(char *s);
+void	ft_bzero_2(void *str, size_t len);
+void	*ft_calloc_2(size_t count, size_t size);
+char	*ft_strchr_2(char *str, char c);
+void	ft_strlcpy_2(char *dest, char *src, size_t len);
 
 char	*ft_substr_2(char *src, size_t start, size_t lenth);
 char	*ft_strjoin_2(char *s1, char *s2);

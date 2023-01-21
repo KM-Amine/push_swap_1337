@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 12:53:27 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/15 08:59:29 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:42:30 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_isspace(char c)
 	return (0);
 }
 
-int	number_creator(const char *str, int i, int sign, int *check)
+static int	number_creator(const char *str, int i, int sign, int *check)
 {
 	long	result;
 
