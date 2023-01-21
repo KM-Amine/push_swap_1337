@@ -6,32 +6,34 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:39:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/21 09:16:35 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:39:36 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+// int					ft_printf(const char *str, ...);
 
-void stacks_printer(t_stack *stack_a, t_stack *stack_b)
-{
-	int i ;
 
-	i = 0;
-	while (i < stack_a->size)
-	{ 
-		ft_printf("%d - %d\n", stack_a->stack[i].nbr, stack_a->stack[i].pos);
-		i++;
-	}
-	ft_printf("-------------------\n");
-	i = 0;
-	while (i < stack_b->size)
-	{ 
-		ft_printf("%d - %d\n", stack_b->stack[i].nbr, stack_b->stack[i].pos);
-		i++;
-	}
-	ft_printf("-------------------\n");
-}
+// void stacks_printer(t_stack *stack_a, t_stack *stack_b)
+// {
+// 	int i ;
+
+// 	i = 0;
+// 	while (i < stack_a->size)
+// 	{ 
+// 		ft_printf("%d - %d\n", stack_a->stack[i].nbr, stack_a->stack[i].pos);
+// 		i++;
+// 	}
+// 	ft_printf("-------------------\n");
+// 	i = 0;
+// 	while (i < stack_b->size)
+// 	{ 
+// 		ft_printf("%d - %d\n", stack_b->stack[i].nbr, stack_b->stack[i].pos);
+// 		i++;
+// 	}
+// 	ft_printf("-------------------\n");
+// }
 
 void	exit_input_function(void)
 {

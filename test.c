@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 19:36:36 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/21 12:04:30 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:32:32 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(void)
 	// int	nbr = 5;
 	// ft_printf("%d", ft_atoi("-2147483649"));
 	char *str = get_next_line(0);
+	free(str);
 }
 
 // struct stack_t
