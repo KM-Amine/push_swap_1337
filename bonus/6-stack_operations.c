@@ -6,12 +6,15 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 09:46:31 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/21 17:39:43 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/21 18:32:17 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+
+
+////////segfault shit
 void element_swap(t_element *a,t_element *b)
 {
 	t_element tmp;
