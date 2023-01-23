@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:19:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/21 12:54:10 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/23 09:51:42 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ void sorting_system(t_stack *sta, t_stack *stb)
 		send_to_stb(sta,stb,len,15);
 		back_to_sta(sta,stb,len);
 	}
-	else if (len <= 500)
+	else
 	{
 		send_to_stb(sta,stb,len,30);
 		back_to_sta(sta,stb,len);

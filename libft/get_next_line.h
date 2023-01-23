@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:03:37 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/21 16:49:09 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/23 08:58:10 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_turncate_line(char *tmp, char **line);
 char	*get_next_line(int fd);
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10000000
+#  define BUFFER_SIZE 1
 # endif
 
 #endif

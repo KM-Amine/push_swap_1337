@@ -25,7 +25,7 @@ fgit:
 #always call libft in all to solve touching libft files
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(LIBFT) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT)  -o $(NAME)
 	@echo "\033[1;32m ----Mandatory created----- \033[0m"
 
 objs/%.o: srcs/%.c
@@ -38,7 +38,7 @@ libft-lib :
 bonus: libft-lib $(BONUS)
 
 $(BONUS): $(BOBJ)
-	$(CC) $(CFLAGS) $(LIBFT) $(BOBJ) -o $(BONUS)
+	$(CC) $(CFLAGS) $(BOBJ) $(LIBFT)  -o $(BONUS)
 	@echo "\033[1;32m ----bonus created----- \033[0m"
 
 bobjs/%.o: bonus/%.c
@@ -47,7 +47,7 @@ bobjs/%.o: bonus/%.c
 
 
 clean:
-	@$(RM) $(OBJDIR)
+	@$(RM) $(OBJDIR) $(BOBJDIR)
 	@$(MAKE) fclean -C libft
 fclean: clean
 	@$(RM) $(NAME) $(BONUS)
