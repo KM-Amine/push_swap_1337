@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 12:53:27 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/21 16:42:30 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:36:34 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ int	ft_atoi_max(const char *str, int *check)
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
+		{
 			sign = sign * -1;
+		}
 		i++;
 	}
 	return (number_creator(str, i, sign, check));

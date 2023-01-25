@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 09:05:24 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/16 13:04:23 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:45:56 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	*numbers_converter(char **final, int *len)
 		i++;
 	}
 	*len = i;
+	//duplicate 
 	return (tab);
 }
 

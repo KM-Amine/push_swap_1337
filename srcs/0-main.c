@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:39:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/23 09:46:16 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:49:03 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	main(int argc, char **argv)
 	sorted_check(&stack_a);
 	sorting_system(&stack_a,&stack_b);
 }
+// string like " " "+ " "- "
 // tab[0] is on the top
 //valgrind
 //garbage collector system
+// duplicate numbers of atoi
