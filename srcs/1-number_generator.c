@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 09:05:24 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/25 11:03:20 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:14:59 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void swap(int *a, int *b)
 	*a = *b;
 	*b = tmp;	
 }
-static int duplicates_checker(int	*tab, int len)
+static void duplicates_checker(int	*tab, int len)
 {
 	int i;
 	int j;
@@ -30,22 +30,29 @@ static int duplicates_checker(int	*tab, int len)
 	dup = 0;
 	j = 0;
 	i = 0;
+
 	while (i < len)
 	{
+
 		dup = 0;
+		j = 0;
 		while (j < len)
 		{
 			if (tab[i] == tab[j])
+			{
 				dup++;
+				if (dup >= 2)
+				{
+					ft_printf("Error");
+					exit(0);	
+				}
+			}
 			j++;
 		}
 		i++;
 	}
-	if (dup == 2)
-	{
-		ft_printf("dup is here");
-		exit(0);	
-	}
+	exit(0);
+
 }
 int	*numbers_converter(char **final, int *len)
 {
@@ -68,7 +75,7 @@ int	*numbers_converter(char **final, int *len)
 		i++;
 	}
 	*len = i;
-	//duplicate 
+	duplicates_checker(tab,*len);
 	return (tab);
 }
 
