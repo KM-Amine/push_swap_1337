@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:25:30 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/25 13:52:56 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:58:37 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	**argument_analyser(int argc, char **argv)
 	char	**final;
 
 	if (argc == 1)
-		exit(EXIT_FAILURE);
+		exit(0);
 	empty_string_checker(argc,argv);
 	total = total_generator(argc, argv);
 	final = data_joiner(total, argc);

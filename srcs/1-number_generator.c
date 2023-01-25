@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 09:05:24 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/25 16:26:21 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:20:20 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void duplicates_checker(int	*tab, int len)
 				dup++;
 				if (dup >= 2)
 				{
-					ft_printf("Error\n");
+					ft_putstr_fd("Error\n", 2);
 					exit(0);	
 				}
 			}

@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:19:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/25 12:00:38 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:18:25 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	get_index(t_stack *st)
 {
 	int	biggest = st->stack[0].nbr;
 	int	biggest_index = 0;
-	int size = st->size;
+	int size = st->size - 1;
 
 	while (size > 0)
 	{
@@ -72,7 +72,7 @@ void back_to_sta(t_stack *sta, t_stack *stb,int max)
 	{
 		index = get_index(stb);
 		tmp = stb->stack[index].pos;
-		if (index < (stb->size)/2)
+		if (index <= (stb->size)/2)
 		{
 			while (stb->stack[0].pos != tmp )
 				move(rb,sta,stb);	
@@ -82,9 +82,7 @@ void back_to_sta(t_stack *sta, t_stack *stb,int max)
 		else
 		{
 			while (stb->stack[0].pos != tmp)
-			{
 				move(rrb,sta,stb);
-			}
 			move(pa,sta,stb);
 		 	max--;
 		}

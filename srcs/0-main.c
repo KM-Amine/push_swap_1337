@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:39:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/25 16:24:37 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:57:09 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void sorted_check(t_stack *sta)
 
 // stack like a real stack
 //array of pointer to function
+//moves that segfult
 int	main(int argc, char **argv)
 {
 	char	**args;

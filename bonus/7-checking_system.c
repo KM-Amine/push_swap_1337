@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 10:14:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/23 09:03:39 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:00:28 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ int is_sorted(t_stack *sta)
 	return (1);
 }
 
-int sorted_check(t_stack *sta)
+int sorted_check(t_stack *sta, t_stack *stb)
 {
-	if (sta->size == 1)
+	// to see this later
+	if (sta->size == 1 && stb->size == 0)
 		return(1);
 	if (is_sorted(sta))
 		return(1);
@@ -81,7 +82,7 @@ void cheking_system(t_stack *sta, t_stack *stb)
 		}
 		str =get_next_line(0);
 	}
-	sorted = sorted_check(sta);
+	sorted = sorted_check(sta,stb);
 	if (sorted == 1)
 		ft_printf("OK\n");
 	else if (sorted == -1)
