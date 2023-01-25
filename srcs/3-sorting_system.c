@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:19:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/23 09:51:42 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:00:38 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,20 @@ void back_to_sta(t_stack *sta, t_stack *stb,int max)
 	while (max >= 0)
 	{
 		index = get_index(stb);
-		tmp = stb->stack[index].nbr;
+		tmp = stb->stack[index].pos;
 		if (index < (stb->size)/2)
 		{
-			while (stb->stack[0].nbr != tmp )
+			while (stb->stack[0].pos != tmp )
 				move(rb,sta,stb);	
 			move(pa,sta,stb);
 			max--;
 		}
 		else
 		{
-			while (stb->stack[0].nbr != tmp)
-				move(rrb,sta,stb);	
+			while (stb->stack[0].pos != tmp)
+			{
+				move(rrb,sta,stb);
+			}
 			move(pa,sta,stb);
 		 	max--;
 		}

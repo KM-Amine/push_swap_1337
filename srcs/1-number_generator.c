@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 09:05:24 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/25 11:14:59 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:26:21 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void duplicates_checker(int	*tab, int len)
 				dup++;
 				if (dup >= 2)
 				{
-					ft_printf("Error");
+					ft_printf("Error\n");
 					exit(0);	
 				}
 			}
@@ -51,8 +51,6 @@ static void duplicates_checker(int	*tab, int len)
 		}
 		i++;
 	}
-	exit(0);
-
 }
 int	*numbers_converter(char **final, int *len)
 {

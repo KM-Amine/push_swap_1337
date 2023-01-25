@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 09:36:32 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/21 09:40:02 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:52:06 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void empty_string_checker(int argc, char **argv)
 	while (i < argc)
 	{
 		if (argv[i][0] == '\0')
+		{
+			ft_putstr_fd("Error\n", 2);
 			exit(0);
+		}
 		i++;
 	}
 }
