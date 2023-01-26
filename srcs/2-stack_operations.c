@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:20:27 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/26 19:06:28 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:52:13 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ void sa_move(t_stack *stack_a, t_stack *stack_b)
 		element_swap(&stack_a->stack[0],&stack_a->stack[1]);
 	ft_printf("sa\n");
 }
+//////////////////motherfucker
 
+/// @brief /
+/// @param stack_a 
+/// @param stack_b 
 void sb_move(t_stack *stack_a, t_stack *stack_b)
 {
 	(void)stack_a;
