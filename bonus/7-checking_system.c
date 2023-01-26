@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 10:14:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/25 19:00:28 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/26 12:59:15 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int sorted_check(t_stack *sta, t_stack *stb)
 	return(-1);
 }
 
+
+//once all instructions are read execute instructions
 void cheking_system(t_stack *sta, t_stack *stb)
 {
 	char *str;

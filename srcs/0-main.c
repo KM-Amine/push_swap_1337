@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:39:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/25 18:57:09 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:37:42 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ int	main(int argc, char **argv)
 	int		*tab_dup;
 	t_stack	stack_a;
 	t_stack stack_b;
-
+	
+	(void)argc;
+	(void)argv;
 	args = argument_analyser(argc, argv);
 	tab = numbers_converter(args, &len);
 	free_args(args);
@@ -91,7 +93,7 @@ int	main(int argc, char **argv)
 	sorted_check(&stack_a);
 	sorting_system(&stack_a,&stack_b);
 }
-// string like " " "+ " "- "
+// string like " " "+ " "- " " 9"9
 // tab[0] is on the top
 //valgrind
 //garbage collector system
