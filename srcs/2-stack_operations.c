@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:20:27 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/26 14:16:43 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:06:28 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,11 @@ void ra_move(t_stack *stack_a, t_stack *stack_b)
 
 	(void)stack_b;
 	tmp = stack_a->stack[0];
-	ft_memmove(&(stack_a->stack[0]), &(stack_a->stack[1]), (stack_a->size - 1)*sizeof(t_element));
-	stack_a->stack[stack_a->size - 1] = tmp;
+	if (stack_a->size != 1 && stack_a->size != 0)
+	{
+		ft_memmove(&(stack_a->stack[0]), &(stack_a->stack[1]), (stack_a->size - 1)*sizeof(t_element));
+		stack_a->stack[stack_a->size - 1] = tmp;
+	}
 	ft_printf("ra\n");
 }
 
@@ -65,7 +68,8 @@ void rb_move(t_stack *stack_a, t_stack *stack_b)
 
 	(void)stack_a;
 	tmp = stack_b->stack[0];
-	ft_memmove(&(stack_b->stack[0]), &(stack_b->stack[1]), (stack_b->size - 1)*sizeof(t_element));
+	if (stack_b->size != 1 && stack_b->size != 0)
+		ft_memmove(&(stack_b->stack[0]), &(stack_b->stack[1]), (stack_b->size - 1)*sizeof(t_element));
 	stack_b->stack[stack_b->size - 1] = tmp;
 	ft_printf("rb\n");
 }
