@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:25:30 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/25 18:58:37 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:58:08 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,37 @@ void empty_string_checker(int argc, char **argv)
 		if (argv[i][0] == '\0')
 		{	
 			ft_putstr_fd("Error\n", 2);
-			exit(0);
+			exit(1);
 		}
 		i++;
 	}	
 }
 
+void	check_for_spaces_and_signes(int argc, char **argv)
+{
+	int i;
+	int j;
+
+	i = 1;
+	while (i < argc)
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] != '+' && argv[i][j] != '-' && argv[i][j] != ' ')
+				break;
+			j++;
+			if(!argv[i][j])
+			{
+				ft_putstr_fd("Error\n", 2);
+				exit(1);
+			}
+		}
+		i++;
+	}
+	
+	
+}
 char	**argument_analyser(int argc, char **argv)
 {
 	char	***total;
@@ -35,7 +60,9 @@ char	**argument_analyser(int argc, char **argv)
 
 	if (argc == 1)
 		exit(0);
+	
 	empty_string_checker(argc,argv);
+	check_for_spaces_and_signes(argc,argv);
 	total = total_generator(argc, argv);
 	final = data_joiner(total, argc);
 	free_total(total);

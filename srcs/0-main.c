@@ -6,34 +6,11 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:39:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/26 11:37:42 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/26 18:20:05 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-// int					ft_printf(const char *str, ...);
-
-
-// void stacks_printer(t_stack *stack_a, t_stack *stack_b)
-// {
-// 	int i ;
-
-// 	i = 0;
-// 	while (i < stack_a->size)
-// 	{ 
-// 		ft_printf("%d - %d\n", stack_a->stack[i].nbr, stack_a->stack[i].pos);
-// 		i++;
-// 	}
-// 	ft_printf("-------------------\n");
-// 	i = 0;
-// 	while (i < stack_b->size)
-// 	{ 
-// 		ft_printf("%d - %d\n", stack_b->stack[i].nbr, stack_b->stack[i].pos);
-// 		i++;
-// 	}
-// 	ft_printf("-------------------\n");
-// }
 
 void	exit_input_function(void)
 {
@@ -53,25 +30,20 @@ int is_sorted(t_stack *sta)
 	while (i < sta->size - 1)
 	{
 		if (sta->stack[i].pos > sta->stack[i+1].pos)
-		{
 			return (0);
-		}
 		i++;
 	}
 	return (1);
 }
 
-void sorted_check(t_stack *sta)
+void sorted_check(t_stack *sta,t_stack *stb)
 {
-	if (sta->size == 1)
+	if (sta->size == 1 && stb->size == 0)
 		exit(0);
 	if (is_sorted(sta))
 		exit(0);
 }
 
-// stack like a real stack
-//array of pointer to function
-//moves that segfult
 int	main(int argc, char **argv)
 {
 	char	**args;
@@ -90,11 +62,9 @@ int	main(int argc, char **argv)
 	tab_sort(tab_dup, len);
 	stack_a = stack_a_creator(tab, tab_dup, len);
 	stack_b = stack_b_creator(len);
-	sorted_check(&stack_a);
+	sorted_check(&stack_a,&stack_b);
 	sorting_system(&stack_a,&stack_b);
 }
-// string like " " "+ " "- " " 9"9
-// tab[0] is on the top
+
 //valgrind
 //garbage collector system
-// duplicate numbers of atoi
