@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3-sorting_system.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
+/*   By: mkhellou <mkhellou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:19:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/25 18:18:25 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:26:49 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,8 +161,6 @@ void sorting_for_5(t_stack *sta, t_stack *stb)
 		move(sa,sta,stb);
 }
 
-// pb pa rr ss segfault
-// if already sorted
 void sorting_system(t_stack *sta, t_stack *stb)
 {
 	int len;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1-number_generator.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
+/*   By: mkhellou <mkhellou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 09:05:24 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/25 17:20:20 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:38:19 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void swap(int *a, int *b)
 	*a = *b;
 	*b = tmp;	
 }
-static void duplicates_checker(int	*tab, int len)
+static int duplicates_checker(int	*tab, int len)
 {
 	int i;
 	int j;
@@ -44,14 +44,16 @@ static void duplicates_checker(int	*tab, int len)
 				if (dup >= 2)
 				{
 					ft_putstr_fd("Error\n", 2);
-					exit(0);	
+					return(0);
 				}
 			}
 			j++;
 		}
 		i++;
 	}
+	return (1);
 }
+
 int	*numbers_converter(char **final, int *len)
 {
 	int	i;
@@ -64,31 +66,45 @@ int	*numbers_converter(char **final, int *len)
 		i++;
 	tab = (int *)ft_calloc(i, sizeof(int));
 	if(!tab)
-		exit_null_free();
+	{
+		free_args(final);
+		exit(EXIT_FAILURE);
+	}
 	i = 0;
 	while (final[i])
 	{
 		tab[i] = ft_atoi_max(final[i], &check);
-		max_value_error(check);
+		if(!max_value_error(check))
+		{
+			free(tab);
+			free_args(final);
+			exit(EXIT_FAILURE);
+		}
 		i++;
 	}
 	*len = i;
-	duplicates_checker(tab,*len);
+	if (!duplicates_checker(tab,*len))
+	{
+		free(tab);
+		free_args(final);
+		exit(EXIT_FAILURE);
+	}
 	return (tab);
 }
 
-void	max_value_error(int check)
+int	max_value_error(int check)
 {
 	if (check == 1)
 	{
 		ft_putstr_fd("Error\n", 2);
-		exit_input_function();
+		return(0);
 	}
 	if (check == -1)
 	{
 		ft_putstr_fd("Error\n", 2);
-		exit_input_function();
+		return(0);
 	}
+	return (1);
 }
 
 int	*tab_sort(int *tab, int len)
@@ -120,6 +136,11 @@ int *tab_copy(int *tab, int len)
 	int *tab_dup;
 
 	tab_dup = (int*)ft_calloc(len, sizeof(int));
+	if(!tab_dup)
+	{
+		free(tab);
+		exit(0);
+	}
 	ft_memcpy(tab_dup, tab, len*sizeof(int));
 	return (tab_dup);
 }

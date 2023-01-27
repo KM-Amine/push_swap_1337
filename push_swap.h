@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
+/*   By: mkhellou <mkhellou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:30:45 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/21 10:18:45 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:23:59 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ char	***total_generator(int argc, char **argv);
 char	**data_joiner(char ***total, int argc);
 char	**check_duplicates(char **final);
 void	free_total(char ***total);
-void	error_detector(char **argv, int i, int j);
+int		error_detector(char **argv, int i, int j);
 int		*numbers_converter(char **final,int *len);
 char	**argument_analyser(int argc, char **argv);
 void 	exit_null_free(void);
-void	max_value_error(int check);
+int		max_value_error(int check);
 void	free_total_exit(char ***total);
 void	free_args(char **args);
 int		*tab_copy(int *tab, int len);

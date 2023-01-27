@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   2-stack_operations.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
+/*   By: mkhellou <mkhellou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:20:27 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/26 19:52:13 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:12:09 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-//segfault and other shit
 
 void element_swap(t_element *a,t_element *b)
 {
@@ -30,11 +28,7 @@ void sa_move(t_stack *stack_a, t_stack *stack_b)
 		element_swap(&stack_a->stack[0],&stack_a->stack[1]);
 	ft_printf("sa\n");
 }
-//////////////////motherfucker
 
-/// @brief /
-/// @param stack_a 
-/// @param stack_b 
 void sb_move(t_stack *stack_a, t_stack *stack_b)
 {
 	(void)stack_a;
@@ -57,9 +51,9 @@ void ra_move(t_stack *stack_a, t_stack *stack_b)
 	t_element tmp;
 
 	(void)stack_b;
-	tmp = stack_a->stack[0];
 	if (stack_a->size != 1 && stack_a->size != 0)
 	{
+		tmp = stack_a->stack[0];
 		ft_memmove(&(stack_a->stack[0]), &(stack_a->stack[1]), (stack_a->size - 1)*sizeof(t_element));
 		stack_a->stack[stack_a->size - 1] = tmp;
 	}
@@ -71,10 +65,12 @@ void rb_move(t_stack *stack_a, t_stack *stack_b)
 	t_element tmp;
 
 	(void)stack_a;
-	tmp = stack_b->stack[0];
 	if (stack_b->size != 1 && stack_b->size != 0)
+	{
+		tmp = stack_b->stack[0];
 		ft_memmove(&(stack_b->stack[0]), &(stack_b->stack[1]), (stack_b->size - 1)*sizeof(t_element));
-	stack_b->stack[stack_b->size - 1] = tmp;
+		stack_b->stack[stack_b->size - 1] = tmp;
+	}
 	ft_printf("rb\n");
 }
 
@@ -82,12 +78,18 @@ void rr_move(t_stack *stack_a, t_stack *stack_b)
 {
 	t_element tmp;
 
-	tmp = stack_a->stack[0];
-	ft_memmove(&(stack_a->stack[0]), &(stack_a->stack[1]), (stack_a->size - 1)*sizeof(t_element));
-	stack_a->stack[stack_a->size - 1] = tmp;
-	tmp = stack_b->stack[0];
-	ft_memmove(&(stack_b->stack[0]), &(stack_b->stack[1]), (stack_b->size - 1)*sizeof(t_element));
-	stack_b->stack[stack_b->size - 1] = tmp;
+	if (stack_a->size != 1 && stack_a->size != 0)
+	{
+		tmp = stack_a->stack[0];
+		ft_memmove(&(stack_a->stack[0]), &(stack_a->stack[1]), (stack_a->size - 1)*sizeof(t_element));
+		stack_a->stack[stack_a->size - 1] = tmp;
+	}
+	if (stack_b->size != 1 && stack_b->size != 0)
+	{
+		tmp = stack_b->stack[0];
+		ft_memmove(&(stack_b->stack[0]), &(stack_b->stack[1]), (stack_b->size - 1)*sizeof(t_element));
+		stack_b->stack[stack_b->size - 1] = tmp;
+	}
 	ft_printf("rr\n");
 }
 
@@ -96,9 +98,12 @@ void rra_move(t_stack *stack_a, t_stack *stack_b)
 	t_element tmp;
 
 	(void)stack_b;
-	tmp = stack_a->stack[stack_a->size - 1];
-	ft_memmove(&(stack_a->stack[1]), &(stack_a->stack[0]), (stack_a->size - 1)*sizeof(t_element));
-	stack_a->stack[0] = tmp;
+	if (stack_a->size != 1 && stack_a->size != 0)
+	{
+		tmp = stack_a->stack[stack_a->size - 1];
+		ft_memmove(&(stack_a->stack[1]), &(stack_a->stack[0]), (stack_a->size - 1)*sizeof(t_element));
+		stack_a->stack[0] = tmp;
+	}
 	ft_printf("rra\n");
 }
 
@@ -107,9 +112,12 @@ void rrb_move(t_stack *stack_a, t_stack *stack_b)
 	t_element tmp;
 
 	(void)stack_a;
-	tmp = stack_b->stack[stack_b->size - 1];
-	ft_memmove(&(stack_b->stack[1]), &(stack_b->stack[0]), (stack_b->size - 1)*sizeof(t_element));
-	stack_b->stack[0] = tmp;
+	if (stack_b->size != 1 && stack_b->size != 0)
+	{
+		tmp = stack_b->stack[stack_b->size - 1];
+		ft_memmove(&(stack_b->stack[1]), &(stack_b->stack[0]), (stack_b->size - 1)*sizeof(t_element));
+		stack_b->stack[0] = tmp;
+	}
 	ft_printf("rrb\n");
 }
 
@@ -117,12 +125,18 @@ void rrr_move(t_stack *stack_a, t_stack *stack_b)
 {
 	t_element tmp;
 
-	tmp = stack_a->stack[stack_a->size - 1];
-	ft_memmove(&(stack_a->stack[1]), &(stack_a->stack[0]), (stack_a->size - 1)*sizeof(t_element));
-	stack_a->stack[0] = tmp;
-	tmp = stack_b->stack[stack_b->size - 1];
-	ft_memmove(&(stack_b->stack[1]), &(stack_b->stack[0]), (stack_b->size - 1)*sizeof(t_element));
-	stack_b->stack[0] = tmp;
+	if (stack_a->size != 1 && stack_a->size != 0)
+	{
+		tmp = stack_a->stack[stack_a->size - 1];
+		ft_memmove(&(stack_a->stack[1]), &(stack_a->stack[0]), (stack_a->size - 1)*sizeof(t_element));
+		stack_a->stack[0] = tmp;
+	}
+	if (stack_b->size != 1 && stack_b->size != 0)
+	{
+		tmp = stack_b->stack[stack_b->size - 1];
+		ft_memmove(&(stack_b->stack[1]), &(stack_b->stack[0]), (stack_b->size - 1)*sizeof(t_element));
+		stack_b->stack[0] = tmp;
+	}
 	ft_printf("rrr\n");
 }
 

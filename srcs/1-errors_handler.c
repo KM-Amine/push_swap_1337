@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   1-errors_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
+/*   By: mkhellou <mkhellou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:36:20 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/16 09:16:15 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:56:18 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	duplicate_analyser(char	**dup, char **final, int *i, int *j)
+int	duplicate_analyser(char	**dup, char **final, int *i, int *j)
 {
 	(*j) = 0;
 	while (dup[(*j)])
@@ -21,10 +21,11 @@ void	duplicate_analyser(char	**dup, char **final, int *i, int *j)
 				+ ft_strlen(final[*i])) == 0)
 		{
 			ft_putstr_fd("Error\n", 2);
-			exit_input_function();
+			return (0);
 		}
 		(*j)++;
 	}
+	return(1);
 }
 
 char	**check_duplicates(char **final)
@@ -39,12 +40,20 @@ char	**check_duplicates(char **final)
 		count++;
 	dup = (char **)ft_calloc(count + 1, sizeof(char **));
 	if(!dup)
-		exit_null_free();
+	{
+		free_args(final);
+		exit(EXIT_FAILURE);
+	}
 	dup[0] = final[0];
 	i = 1;
 	while (final[i])
 	{
-		duplicate_analyser(dup, final, &i, &j);
+		if(!duplicate_analyser(dup, final, &i, &j))
+		{
+			free_args(final);
+			free(dup);
+			exit(EXIT_FAILURE);
+		}
 		dup[j] = final[i];
 		i++;
 	}
@@ -52,22 +61,23 @@ char	**check_duplicates(char **final)
 	return (dup);
 }
 
-void	sign_checker(char **argv, int i, int j)
+int	sign_checker(char **argv, int i, int j)
 {
 	if (argv[j][i + 1] == '+' || argv[j][i + 1] == '-'
 		|| argv[j][i + 1] == '\0')
 	{
 		ft_putstr_fd("Error\n", 2);
-		exit_input_function();
+		return(0);
 	}
 	if (i != 0 && argv[j][i - 1] != ' ')
 	{
 		ft_putstr_fd("Error\n", 2);
-		exit_input_function();
+		return(0);
 	}
+	return(1);
 }
 
-void	error_detector(char **argv, int i, int j)
+int	error_detector(char **argv, int i, int j)
 {
 	i = 0;
 	while (argv[j][i])
@@ -76,7 +86,8 @@ void	error_detector(char **argv, int i, int j)
 		{
 			if (argv[j][i] == '+' || argv[j][i] == '-')
 			{
-				sign_checker(argv, i, j);
+				if (!sign_checker(argv, i, j))
+					return(0);
 			}
 			else if (argv[j][i] == ' ')
 			{
@@ -86,10 +97,11 @@ void	error_detector(char **argv, int i, int j)
 			else
 			{
 				ft_putstr_fd("Error\n", 2);
-				exit_input_function();
+				return(0);
 			}
 		}
 		i++;
 	}
+	return(1);
 }
 

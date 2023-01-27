@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2-stack_creation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
+/*   By: mkhellou <mkhellou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:11:17 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/16 15:09:35 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:51:18 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ t_stack	stack_a_creator(int *tab, int *tab_dup, int len)
 	int j;
 
 	stack_a.stack  = (t_element *)ft_calloc(len, sizeof(t_stack));
+	if (stack_a.stack == NULL)
+	{
+		free(tab);
+		free(tab_dup);
+		exit(EXIT_FAILURE);
+	}
 	stack_a.size = len;
 	i = 0;
 	while (i < len)
@@ -46,6 +52,8 @@ t_stack stack_b_creator(int len)
 	t_stack stack_b;
 
 	stack_b.stack  = (t_element *)ft_calloc(len, sizeof(t_stack));
+	if(!stack_b.stack)
+		return(stack_b);
 	stack_b.size = 0;
 	return (stack_b);
 }

@@ -1,7 +1,7 @@
 NAME = push_swap
 CC = cc
 #leaks
-CFLAGS = -Wall -Wextra -Werror  #-fsanitize=address -g -I .
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g -I .
 RM = rm -rf
 
 BONUS = checker
@@ -55,6 +55,7 @@ fclean: clean
 	@echo "\033[1;32m ----Project cleaned----- \033[0m"
 
 re: fclean all
+bre: fclean bonus
 
 .PHONY: all clean fclean re bonus libft-lib
 
