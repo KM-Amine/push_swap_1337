@@ -1,7 +1,7 @@
 NAME = push_swap
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 RM = rm -rf
 HEADER = push_swap.h
 
