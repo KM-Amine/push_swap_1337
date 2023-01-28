@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:30:45 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/28 12:29:32 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/28 13:21:07 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,21 @@ typedef struct s_stack
 
 typedef struct s_stacks
 {
-	t_stack	sta;
-	t_stack	stb;
+	t_stack		sta;
+	t_stack		stb;
 }				t_stacks;
+
+typedef struct s_pstacks
+{
+	t_stack		*sta;
+	t_stack		*stb;
+}				t_pstacks;
+
+typedef struct s_len_data
+{
+	int			max;
+	int			range;
+}				t_len_data;
 
 enum
 {
@@ -87,5 +99,12 @@ void			pb_move(t_stack *stack_a, t_stack *stack_b);
 void			pa_move(t_stack *stack_a, t_stack *stack_b);
 void			send_to_stb(t_stack *sta, t_stack *stb, int len, int range);
 void			back_to_sta(t_stack *sta, t_stack *stb, int max);
+
+int				get_index(t_stack *st);
+void			check_max_value(t_pstacks pstacks, int i, int *biggest,
+					t_len_data data);
+void			throw_down(t_pstacks pstacks, int i, int *biggest,
+					t_len_data data);
+void			throw_up(t_pstacks pstacks, int *biggest, t_len_data data);
 
 #endif
