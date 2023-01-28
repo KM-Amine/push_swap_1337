@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:30:45 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/28 15:52:09 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/28 17:19:42 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,8 @@ void			check_max_value(t_pstacks pstacks, int i, int *biggest,
 void			throw_down(t_pstacks pstacks, int i, int *biggest,
 					t_len_data data);
 void			throw_up(t_pstacks pstacks, int *biggest, t_len_data data);
+
+char			*input_reader(void);
+void			instructions_executer(t_stack *sta, t_stack *stb, char *total);
 
 #endif
