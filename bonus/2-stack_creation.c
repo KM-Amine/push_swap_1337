@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	sta_null_check(int *tab, int *tab_dup, t_stack	stack_a)
+void	sta_null_check(int *tab, int *tab_dup, t_stack stack_a)
 {
 	if (stack_a.stack == NULL)
 	{

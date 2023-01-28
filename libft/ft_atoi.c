@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 14:29:32 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/14 11:38:06 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:38:15 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	number_creator(const char *str, int i, int sign)
 		result = result + (str[i] - '0');
 		if (sign > 0 && result > INT_MAX)
 			return (0);
-		if (sign < 0 && -result < INT_MIN)
+		if (sign < 0 && (-result) < INT_MIN)
 			return (-1);
 		i++;
 	}

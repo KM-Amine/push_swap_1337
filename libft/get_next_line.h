@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:03:37 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/23 08:58:10 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:34:09 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*ft_substr_2(char *src, size_t start, size_t lenth);
 char	*ft_strjoin_2(char *s1, char *s2);
 char	*ft_read_line(char *tmp, int fd);
 char	*ft_turncate_line(char *tmp, char **line);
+void	tmp_free(char **tmp);
 
 char	*get_next_line(int fd);
 

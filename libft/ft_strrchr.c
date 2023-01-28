@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  mkhellou < mkhellou@student.1337.ma>      +#+  +:+       +#+        */
+/*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:55:58 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/10/10 07:58:29 by  mkhellou        ###   ########.fr       */
+/*   Updated: 2023/01/28 16:59:02 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,13 @@ char	*ft_strrchr(const char *s, int c)
 		len--;
 	}
 	return (0);
+}
+
+void	tmp_free(char **tmp)
+{
+	if ((*tmp) != NULL)
+	{
+		free(*tmp);
+		(*tmp) = NULL;
+	}
 }

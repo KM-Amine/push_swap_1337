@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:03:42 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/21 16:57:02 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:58:49 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ char	*get_next_line(int fd)
 	tmp = ft_turncate_line(tmp, &line);
 	if (tmp == NULL || line == NULL)
 		return (NULL);
+	tmp_free(&tmp);
 	return (line);
 }

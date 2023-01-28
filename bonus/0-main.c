@@ -6,12 +6,16 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:39:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/28 16:12:00 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/28 17:01:06 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+
+//norm 
+//leaks
+//leaks in invalid input
 int	main(int argc, char **argv)
 {
 	char		**args;

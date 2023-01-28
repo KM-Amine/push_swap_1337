@@ -50,7 +50,7 @@ static int	duplicates_checker(int *tab, int len)
 	return (1);
 }
 
-void	number_creator(int	*tab, char **final, int i, int *check)
+void	number_creator(int *tab, char **final, int i, int *check)
 {
 	tab[i] = ft_atoi_max(final[i], check);
 	if (!max_value_error(*check))

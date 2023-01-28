@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:20:54 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/28 15:50:02 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:40:21 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	pb_move(t_stack *stack_a, t_stack *stack_b)
 
 	if (stack_a->size == 0)
 	{
-
 		return ;
 	}
 	tmp = stack_a->stack[0];
