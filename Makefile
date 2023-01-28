@@ -1,8 +1,9 @@
 NAME = push_swap
 CC = cc
-#leaks
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g -I .
+
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
+HEADER = push_swap.h
 
 BONUS = checker
 LIBFT = libft/libft.a 
@@ -29,7 +30,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT)  -o $(NAME)
 	@echo "\033[1;32m ----Mandatory created----- \033[0m"
 
-objs/%.o: srcs/%.c
+objs/%.o: srcs/%.c $(HEADER)
 	@mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -42,7 +43,7 @@ $(BONUS): $(BOBJ)
 	$(CC) $(CFLAGS) $(BOBJ) $(LIBFT)  -o $(BONUS)
 	@echo "\033[1;32m ----bonus created----- \033[0m"
 
-bobjs/%.o: bonus/%.c
+bobjs/%.o: bonus/%.c $(HEADER)
 	@mkdir -p $(BOBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -57,5 +58,5 @@ fclean: clean
 re: fclean all
 bre: fclean bonus
 
-.PHONY: all clean fclean re bonus libft-lib
+.PHONY: all clean fclean re bonus bre libft-lib
 

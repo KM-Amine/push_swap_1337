@@ -3,54 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   1-args_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhellou <mkhellou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:25:30 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/27 20:44:30 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/28 10:40:36 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-void empty_string_checker(int argc, char **argv)
-{
-	int i;
-
-	i = 1;
-	while (i < argc)
-	{
-		if (argv[i][0] == '\0')
-		{	
-			ft_putstr_fd("Error\n", 2);
-			exit(EXIT_FAILURE);
-		}
-		i++;
-	}	
-}
-
-void	check_for_spaces_and_signes(int argc, char **argv)
-{
-	int i;
-	int j;
-
-	i = 1;
-	while (i < argc)
-	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (argv[i][j] != '+' && argv[i][j] != '-' && argv[i][j] != ' ')
-				break;
-			j++;
-			if(!argv[i][j])
-			{
-				ft_putstr_fd("Error\n", 2);
-				exit(EXIT_FAILURE);
-			}
-		}
-		i++;
-	}
-}
 
 char	**argument_analyser(int argc, char **argv)
 {
@@ -59,8 +19,8 @@ char	**argument_analyser(int argc, char **argv)
 
 	if (argc <= 1)
 		exit(0);
-	empty_string_checker(argc,argv);
-	check_for_spaces_and_signes(argc,argv);
+	empty_string_checker(argc, argv);
+	check_for_spaces_and_signes(argc, argv);
 	total = total_generator(argc, argv);
 	final = data_joiner(total, argc);
 	if (final == NULL)
@@ -86,13 +46,13 @@ char	***total_generator(int argc, char **argv)
 	while (j < argc)
 	{
 		i = 0;
-		if(!error_detector(argv, i, j))
+		if (!error_detector(argv, i, j))
 		{
 			free_total_exit(total);
 			exit(EXIT_FAILURE);
 		}
 		total[j] = ft_split(argv[j], ' ');
-		if(!total[j])
+		if (!total[j])
 		{
 			free_total_exit(total);
 			exit(EXIT_FAILURE);
@@ -134,7 +94,7 @@ char	**data_joiner(char ***total, int argc)
 	count = total_counter(argc, total);
 	final = (char **)ft_calloc(count + 1, sizeof(char **));
 	if (!final)
-		return(NULL);
+		return (NULL);
 	c = 0;
 	j = 1;
 	while (j < argc)
@@ -149,51 +109,4 @@ char	**data_joiner(char ***total, int argc)
 		j++;
 	}
 	return (final);
-}
-
-void	free_total(char ***total)
-{
-	int	j;
-
-	j = 1;
-	while (total[j])
-	{
-		free(total[j]);
-		j++;
-	}
-	free(total);
-}
-
-
-void	free_total_exit(char ***total)
-{
-	int	j;
-	int i;
-
-	j = 1;
-	while (total[j])
-	{
-		i = 0;
-		while (total[j][i])
-		{
-			free(total[j][i]);
-			i++;
-		}
-		free(total[j]);
-		j++;
-	}
-	free(total);
-}
-
-void	free_args(char **args)
-{
-	int i;
-
-	i =0;
-	while (args[i])
-	{
-		free(args[i]);
-		i++;
-	}
-	free(args);
 }

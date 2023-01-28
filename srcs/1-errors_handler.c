@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   1-errors_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhellou <mkhellou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:36:20 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/27 20:56:18 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/28 11:44:26 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	duplicate_analyser(char	**dup, char **final, int *i, int *j)
+int	duplicate_analyser(char **dup, char **final, int *i, int *j)
 {
 	(*j) = 0;
 	while (dup[(*j)])
@@ -25,7 +25,18 @@ int	duplicate_analyser(char	**dup, char **final, int *i, int *j)
 		}
 		(*j)++;
 	}
-	return(1);
+	return (1);
+}
+
+void	string_duplicate(char **dup, char **final, int *i, int *j)
+{
+	if (!duplicate_analyser(dup, final, i, j))
+	{
+		free_args(final);
+		free(dup);
+		exit(EXIT_FAILURE);
+	}
+	dup[*j] = final[*i];
 }
 
 char	**check_duplicates(char **final)
@@ -39,7 +50,7 @@ char	**check_duplicates(char **final)
 	while (final[count])
 		count++;
 	dup = (char **)ft_calloc(count + 1, sizeof(char **));
-	if(!dup)
+	if (!dup)
 	{
 		free_args(final);
 		exit(EXIT_FAILURE);
@@ -48,13 +59,7 @@ char	**check_duplicates(char **final)
 	i = 1;
 	while (final[i])
 	{
-		if(!duplicate_analyser(dup, final, &i, &j))
-		{
-			free_args(final);
-			free(dup);
-			exit(EXIT_FAILURE);
-		}
-		dup[j] = final[i];
+		string_duplicate(dup, final, &i, &j);
 		i++;
 	}
 	free(final);
@@ -63,18 +68,18 @@ char	**check_duplicates(char **final)
 
 int	sign_checker(char **argv, int i, int j)
 {
-	if (argv[j][i + 1] == '+' || argv[j][i + 1] == '-'
-		|| argv[j][i + 1] == '\0')
+	if (argv[j][i + 1] == '+' || argv[j][i + 1] == '-' || argv[j][i
+		+ 1] == '\0')
 	{
 		ft_putstr_fd("Error\n", 2);
-		return(0);
+		return (0);
 	}
 	if (i != 0 && argv[j][i - 1] != ' ')
 	{
 		ft_putstr_fd("Error\n", 2);
-		return(0);
+		return (0);
 	}
-	return(1);
+	return (1);
 }
 
 int	error_detector(char **argv, int i, int j)
@@ -87,7 +92,7 @@ int	error_detector(char **argv, int i, int j)
 			if (argv[j][i] == '+' || argv[j][i] == '-')
 			{
 				if (!sign_checker(argv, i, j))
-					return(0);
+					return (0);
 			}
 			else if (argv[j][i] == ' ')
 			{
@@ -97,11 +102,10 @@ int	error_detector(char **argv, int i, int j)
 			else
 			{
 				ft_putstr_fd("Error\n", 2);
-				return(0);
+				return (0);
 			}
 		}
 		i++;
 	}
-	return(1);
+	return (1);
 }
-

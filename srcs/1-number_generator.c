@@ -3,37 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   1-number_generator.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhellou <mkhellou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 09:05:24 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/27 19:38:19 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:05:37 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-
-void swap(int *a, int *b)
+void	swap(int *a, int *b)
 {
-	int tmp;
+	int	tmp;
 
 	tmp = *a;
 	*a = *b;
-	*b = tmp;	
+	*b = tmp;
 }
-static int duplicates_checker(int	*tab, int len)
+
+static int	duplicates_checker(int *tab, int len)
 {
-	int i;
-	int j;
-	int dup;
+	int	i;
+	int	j;
+	int	dup;
 
-	dup = 0;
-	j = 0;
 	i = 0;
-
 	while (i < len)
 	{
-
 		dup = 0;
 		j = 0;
 		while (j < len)
@@ -44,7 +40,7 @@ static int duplicates_checker(int	*tab, int len)
 				if (dup >= 2)
 				{
 					ft_putstr_fd("Error\n", 2);
-					return(0);
+					return (0);
 				}
 			}
 			j++;
@@ -52,6 +48,17 @@ static int duplicates_checker(int	*tab, int len)
 		i++;
 	}
 	return (1);
+}
+
+void	number_creator(int	*tab, char **final, int i, int *check)
+{
+	tab[i] = ft_atoi_max(final[i], check);
+	if (!max_value_error(*check))
+	{
+		free(tab);
+		free_args(final);
+		exit(EXIT_FAILURE);
+	}
 }
 
 int	*numbers_converter(char **final, int *len)
@@ -65,25 +72,16 @@ int	*numbers_converter(char **final, int *len)
 	while (final[i])
 		i++;
 	tab = (int *)ft_calloc(i, sizeof(int));
-	if(!tab)
+	if (!tab)
 	{
 		free_args(final);
 		exit(EXIT_FAILURE);
 	}
-	i = 0;
-	while (final[i])
-	{
-		tab[i] = ft_atoi_max(final[i], &check);
-		if(!max_value_error(check))
-		{
-			free(tab);
-			free_args(final);
-			exit(EXIT_FAILURE);
-		}
-		i++;
-	}
+	i = -1;
+	while (final[++i])
+		number_creator(tab, final, i, &check);
 	*len = i;
-	if (!duplicates_checker(tab,*len))
+	if (!duplicates_checker(tab, *len))
 	{
 		free(tab);
 		free_args(final);
@@ -97,50 +95,12 @@ int	max_value_error(int check)
 	if (check == 1)
 	{
 		ft_putstr_fd("Error\n", 2);
-		return(0);
+		return (0);
 	}
 	if (check == -1)
 	{
 		ft_putstr_fd("Error\n", 2);
-		return(0);
+		return (0);
 	}
 	return (1);
-}
-
-int	*tab_sort(int *tab, int len)
-{
-	int i;
-	int check;
-
-	check = -1;
-	while (check != 1)
-	{
-		check = 1;
-		i = 0;
-		while (i < len - 1)
-		{
-			if (tab[i] > tab[i + 1])
-			{	
-				swap (&tab[i + 1], &tab[i]);
-				check = -1;
-			}	
-			i++;
-		}
-	}
-	
-	return (0);
-}
-
-int *tab_copy(int *tab, int len)
-{
-	int *tab_dup;
-
-	tab_dup = (int*)ft_calloc(len, sizeof(int));
-	if(!tab_dup)
-	{
-		free(tab);
-		exit(0);
-	}
-	ft_memcpy(tab_dup, tab, len*sizeof(int));
-	return (tab_dup);
 }
