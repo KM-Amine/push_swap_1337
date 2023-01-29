@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 17:18:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/28 17:18:55 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/29 10:01:24 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,25 @@ char	*ft_strfjoin(char *s1, char *s2)
 	return (result);
 }
 
-void	input_conditions(char	*str, char	*total)
+void	input_conditions(char	*str, char	**total)
 {
+	if (ft_strlen(str) != 4 && ft_strlen(str) != 3)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
 	if (!ft_strncmp(str, "sa\n", 3) || !ft_strncmp(str, "sb\n", 3))
-		total = ft_strfjoin(total, str);
+		*total = ft_strfjoin(*total, str);
 	else if (!ft_strncmp(str, "ss\n", 3) || !ft_strncmp(str, "pa\n", 3))
-		total = ft_strfjoin(total, str);
+		*total = ft_strfjoin(*total, str);
 	else if (!ft_strncmp(str, "pb\n", 3) || !ft_strncmp(str, "ra\n", 3))
-		total = ft_strfjoin(total, str);
+		*total = ft_strfjoin(*total, str);
 	else if (!ft_strncmp(str, "rb\n", 3) || !ft_strncmp(str, "rr\n", 3))
-		total = ft_strfjoin(total, str);
+		*total = ft_strfjoin(*total, str);
 	else if (!ft_strncmp(str, "rra\n", 4) || !ft_strncmp(str, "rrb\n", 4))
-		total = ft_strfjoin(total, str);
+		*total = ft_strfjoin(*total, str);
 	else if (!ft_strncmp(str, "rrr\n", 4))
-		total = ft_strfjoin(total, str);
+		*total = ft_strfjoin(*total, str);
 	else
 	{
 		ft_putstr_fd("Error\n", 2);
@@ -61,12 +66,7 @@ char	*input_reader(void)
 	total = (char *)ft_calloc(1, 1);
 	while (str)
 	{
-		if (ft_strlen(str) != 4 && ft_strlen(str) != 3)
-		{
-			ft_putstr_fd("Error\n", 2);
-			exit(1);
-		}
-		input_conditions(str, total);
+		input_conditions(str, &total);
 		str = get_next_line(0);
 	}
 	return (total);

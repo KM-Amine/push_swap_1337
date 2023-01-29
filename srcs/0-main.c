@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:39:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/28 17:22:55 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/29 10:02:21 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ void	sorted_check(t_stack *sta, t_stack *stb)
 //gnl bonus
 //tester for bonus and other stuff
 //submition and per-per evaluation
+//norm 
+//leaks
+//leaks in invalid input in bonus
 
 int	main(int argc, char **argv)
 {
