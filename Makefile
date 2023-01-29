@@ -1,22 +1,44 @@
 NAME = push_swap
-CC = cc
+BONUS = checker
 
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
+
 HEADER = push_swap.h
-
-BONUS = checker
 LIBFT = libft/libft.a 
-SRC = $(wildcard srcs/*.c)
 
-OBJ = $(SRC:srcs/%.c=objs/%.o)
+OBJ = objs/0-main.o \
+	objs/1-args_check.o \
+	objs/1-args_utils.o \
+	objs/1-errors_handler.o \
+	objs/1-number_generator.o \
+	objs/1-tab_utils.o \
+	objs/2-stack_creation.o \
+	objs/2-stack_operations_1.o \
+	objs/2-stack_operations_2.o \
+	objs/2-stack_operations_3.o \
+	objs/3-sorting_system_1.o \
+	objs/3-sorting_system_2.o \
+	objs/3-sorting_system_3.o \
+	objs/ft_atoi_max.o \
 
-BSRC = $(wildcard bonus/*.c)
-BOBJ = $(BSRC:bonus/%.c=bobjs/%.o)
+BOBJ = bobjs/0-main.o \
+	bobjs/1-args_check.o \
+	bobjs/1-args_utils.o \
+	bobjs/1-errors_handler.o \
+	bobjs/1-number_generator.o \
+	bobjs/1-tab_utils.o \
+	bobjs/2-stack_creation.o \
+	bobjs/2-stack_operations_1.o \
+	bobjs/2-stack_operations_2.o \
+	bobjs/2-stack_operations_3.o \
+	bobjs/7-checking_system_1.o \
+	bobjs/7-checking_system_2.o \
+	bobjs/ft_atoi_max.o \
 
 OBJDIR = objs
 BOBJDIR = bobjs
-
 
 all: libft-lib $(NAME)
 
@@ -26,7 +48,7 @@ fgit:
 #---->deleet this shit
 #always call libft in all to solve touching libft files
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT)  -o $(NAME)
 	@echo "\033[1;32m ----Mandatory created----- \033[0m"
 
@@ -54,7 +76,6 @@ clean:
 fclean: clean
 	@$(RM) $(NAME) $(BONUS)
 	@echo "\033[1;32m ----Project cleaned----- \033[0m"
-
 re: fclean all
 bre: fclean bonus
 
