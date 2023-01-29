@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:30:45 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/29 11:38:10 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/29 11:48:56 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,7 @@ void			throw_up(t_pstacks pstacks, int *biggest, t_len_data data);
 
 char			*input_reader(t_stack *sta, t_stack *stb);
 void			instructions_executer(t_stack *sta, t_stack *stb, char *total);
+void			free_instruction_error(char *str, char **total, t_stack *sta,
+					t_stack *stb);
 
 #endif

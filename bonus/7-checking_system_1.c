@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   7-checking_system.c                                :+:      :+:    :+:   */
+/*   7-checking_system_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 10:14:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/28 17:19:54 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/29 11:48:42 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ int	sorted_check(t_stack *sta, t_stack *stb)
 	else if (is_sorted(sta) && stb->size == 0)
 		return (1);
 	return (-1);
+}
+
+void	free_instruction_error(char *str, char **total, t_stack *sta,
+		t_stack *stb)
+{
+	free(str);
+	free(*total);
+	free(sta->stack);
+	free(stb->stack);
+	ft_putstr_fd("Error\n", 2);
+	exit(EXIT_FAILURE);
 }
 
 void	cheking_system(t_stack *sta, t_stack *stb)
