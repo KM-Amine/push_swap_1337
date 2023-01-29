@@ -42,12 +42,6 @@ BOBJDIR = bobjs
 
 all: libft-lib $(NAME)
 
-#---->deleet this shit
-fgit:
-	./git.sh
-#---->deleet this shit
-#always call libft in all to solve touching libft files
-
 $(NAME): $(OBJ) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT)  -o $(NAME)
 	@echo "\033[1;32m ----Mandatory created----- \033[0m"
@@ -61,7 +55,7 @@ libft-lib :
 
 bonus: libft-lib $(BONUS)
 
-$(BONUS): $(BOBJ)
+$(BONUS): $(BOBJ) $(LIBFT)
 	$(CC) $(CFLAGS) $(BOBJ) $(LIBFT)  -o $(BONUS)
 	@echo "\033[1;32m ----bonus created----- \033[0m"
 
