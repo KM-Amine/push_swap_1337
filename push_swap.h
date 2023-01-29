@@ -107,7 +107,7 @@ void			throw_down(t_pstacks pstacks, int i, int *biggest,
 					t_len_data data);
 void			throw_up(t_pstacks pstacks, int *biggest, t_len_data data);
 
-char			*input_reader(void);
+char	*input_reader(t_stack *sta, t_stack *stb);
 void			instructions_executer(t_stack *sta, t_stack *stb, char *total);
 
 #endif

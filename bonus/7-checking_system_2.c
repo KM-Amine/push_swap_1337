@@ -31,10 +31,14 @@ char	*ft_strfjoin(char *s1, char *s2)
 	return (result);
 }
 
-void	input_conditions(char	*str, char	**total)
+void	input_conditions(char	*str, char	**total, t_stack *sta, t_stack *stb)
 {
 	if (ft_strlen(str) != 4 && ft_strlen(str) != 3)
 	{
+		free(str);
+		free(*total);
+		free(sta->stack);
+		free(stb->stack);
 		ft_putstr_fd("Error\n", 2);
 		exit(1);
 	}
@@ -52,12 +56,16 @@ void	input_conditions(char	*str, char	**total)
 		*total = ft_strfjoin(*total, str);
 	else
 	{
+		free(str);
+		free(*total);
+		free(sta->stack);
+		free(stb->stack);
 		ft_putstr_fd("Error\n", 2);
 		exit(1);
 	}
 }
 
-char	*input_reader(void)
+char	*input_reader(t_stack *sta, t_stack *stb)
 {
 	char	*str;
 	char	*total;
@@ -66,7 +74,7 @@ char	*input_reader(void)
 	total = (char *)ft_calloc(1, 1);
 	while (str)
 	{
-		input_conditions(str, &total);
+		input_conditions(str, &total, sta, stb);
 		str = get_next_line(0);
 	}
 	return (total);

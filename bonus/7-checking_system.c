@@ -40,7 +40,7 @@ void	cheking_system(t_stack *sta, t_stack *stb)
 	char	*total;
 	int		sorted;
 
-	total = input_reader();
+	total = input_reader(sta, stb);
 	instructions_executer(sta, stb, total);
 	sorted = sorted_check(sta, stb);
 	if (sorted == 1)
