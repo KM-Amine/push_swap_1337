@@ -63,7 +63,6 @@ bobjs/%.o: bonus/%.c $(HEADER)
 	@mkdir -p $(BOBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-
 clean:
 	@$(RM) $(OBJDIR) $(BOBJDIR)
 	@$(MAKE) fclean -C libft
