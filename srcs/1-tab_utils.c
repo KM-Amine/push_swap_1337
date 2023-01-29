@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1-number_utils.c                                   :+:      :+:    :+:   */
+/*   1-tab_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 11:48:34 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/28 12:06:29 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/29 11:41:33 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	*tab_copy(int *tab, int len)
 	if (!tab_dup)
 	{
 		free(tab);
-		exit(0);
+		exit(EXIT_FAILURE);
 	}
 	ft_memcpy(tab_dup, tab, len * sizeof(int));
 	return (tab_dup);

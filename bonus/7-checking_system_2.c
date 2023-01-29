@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 17:18:02 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/29 10:01:24 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/29 11:40:20 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	input_conditions(char	*str, char	**total, t_stack *sta, t_stack *stb)
 		free(sta->stack);
 		free(stb->stack);
 		ft_putstr_fd("Error\n", 2);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	if (!ft_strncmp(str, "sa\n", 3) || !ft_strncmp(str, "sb\n", 3))
 		*total = ft_strfjoin(*total, str);
@@ -61,7 +61,7 @@ void	input_conditions(char	*str, char	**total, t_stack *sta, t_stack *stb)
 		free(sta->stack);
 		free(stb->stack);
 		ft_putstr_fd("Error\n", 2);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 }
 
