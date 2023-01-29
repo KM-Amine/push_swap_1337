@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:39:59 by mkhellou          #+#    #+#             */
-/*   Updated: 2023/01/29 14:59:20 by mkhellou         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:17:46 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,11 @@ void	sorted_check(t_stack *sta, t_stack *stb)
 		exit(EXIT_SUCCESS);
 }
 
-//general instruction
-//tableau d'info
-//norminette
 //tester for bonus and other stuff
-//submition and per-per evaluation
-//norm
+//delete comments
+//makefile
 //leaks
+//norminette
 
 int	main(int argc, char **argv)
 {

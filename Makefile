@@ -23,19 +23,19 @@ OBJ = objs/0-main.o \
 	objs/3-sorting_system_3.o \
 	objs/ft_atoi_max.o \
 
-BOBJ = bobjs/0-main.o \
-	bobjs/1-args_check.o \
-	bobjs/1-args_utils.o \
-	bobjs/1-errors_handler.o \
-	bobjs/1-number_generator.o \
-	bobjs/1-tab_utils.o \
-	bobjs/2-stack_creation.o \
-	bobjs/2-stack_operations_1.o \
-	bobjs/2-stack_operations_2.o \
-	bobjs/2-stack_operations_3.o \
-	bobjs/7-checking_system_1.o \
-	bobjs/7-checking_system_2.o \
-	bobjs/ft_atoi_max.o \
+BOBJ = bobjs/0-main_bonus.o \
+	bobjs/1-args_check_bonus.o \
+	bobjs/1-args_utils_bonus.o \
+	bobjs/1-errors_handler_bonus.o \
+	bobjs/1-number_generator_bonus.o \
+	bobjs/1-tab_utils_bonus.o \
+	bobjs/2-stack_creation_bonus.o \
+	bobjs/2-stack_operations_1_bonus.o \
+	bobjs/2-stack_operations_2_bonus.o \
+	bobjs/2-stack_operations_3_bonus.o \
+	bobjs/7-checking_system_1_bonus.o \
+	bobjs/7-checking_system_2_bonus.o \
+	bobjs/ft_atoi_max_bonus.o \
 
 OBJDIR = objs
 BOBJDIR = bobjs
